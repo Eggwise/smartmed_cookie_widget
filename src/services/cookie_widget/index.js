@@ -36,12 +36,23 @@ export default {
 
     init(){
 
-
         let hide = !!document.querySelector('#dont_show_cookie_modal_on_page');
 
         if (hide) {
-            console.log('Dont shot cookie modal on this page');
-            window.Metomic('ConsentManager:hide');
+            console.log('Dont show cookie modal on this page');
+
+            let amount = 10;
+
+            //hacky script to hide..
+            const hide_metomic = _ => {
+                console.log('Hide metomic')
+
+                window.Metomic('ConsentManager:hide');
+                amount = amount * 1.3;
+                setTimeout(hide_metomic, amount);
+            };
+
+            hide_metomic();
             return;
         }
         let lang = this.get_language();
