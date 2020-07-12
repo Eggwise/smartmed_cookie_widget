@@ -46,6 +46,7 @@
         mounted(){
 
             window.addEventListener('load', x=> {
+                console.log('Window loaded, init cookie widget language')
                 cookie_service.init();
             })
 
