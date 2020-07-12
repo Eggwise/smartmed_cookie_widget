@@ -45,7 +45,10 @@
 
         mounted(){
 
-            cookie_service.init();
+            window.addEventListener('load', x=> {
+                cookie_service.init();
+            })
+
 
         }
 
