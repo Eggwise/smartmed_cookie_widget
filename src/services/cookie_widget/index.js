@@ -38,6 +38,7 @@ export default {
 
         let hide = !!document.querySelector('#dont_show_cookie_modal_on_page');
 
+        console.log('Hide modal ?', hide);
         if (hide) {
             console.log('Dont show cookie modal on this page');
 
