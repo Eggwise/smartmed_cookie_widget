@@ -37,17 +37,38 @@ export default {
         });
     },
 
+    add_style_tag(src, on_load) {
+        var head = document.head;
+        var link = document.createElement("link");
+
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = src;
+
+        head.appendChild(link);
+
+        if (on_load) {
+            link.addEventListener('load', function () {
+                on_load()
+            });
+        }
+
+    },
+
     init() {
 
         let hide = !!document.querySelector('#dont_show_cookie_modal_on_page');
 
-        console.log('Hide modal ?', hide);
         if (hide) {
             console.log('Dont show cookie modal on this page');
             return;
-
         }
 
+        //init style
+        const link = 'https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.css'
+        this.add_style_tag(link, null)
+
+        // init widget
         let lang = this.get_language();
         const options = {
             backgroundColor: '#012359',
@@ -66,7 +87,6 @@ export default {
 
             options.content = content;
         }
-
 
 
         window.CookieBoxConfig = options;
