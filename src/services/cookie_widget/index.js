@@ -55,12 +55,28 @@ export default {
 
     },
 
+
+    hide_metomic(){
+        //some pages still have metomic loaded
+        let amount = 10;
+
+        //hacky script to hide..
+        const hide_metomic = _ => {
+            window.Metomic('ConsentManager:hide');
+            amount = amount * 1.3;
+            setTimeout(hide_metomic, amount);
+        };
+
+        hide_metomic();
+    },
+
     init() {
 
         let hide = !!document.querySelector('#dont_show_cookie_modal_on_page');
 
         if (hide) {
             console.log('Dont show cookie modal on this page');
+            this.hide_metomic()
             return;
         }
 
@@ -97,6 +113,8 @@ export default {
             console.log('OMG')
         })
 
+
+        this.hide_metomic()
 
     }
 
