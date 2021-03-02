@@ -84,10 +84,12 @@ export default {
         const link = 'https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.css'
         this.add_style_tag(link, null)
 
+
+
         // init widget
         let lang = this.get_language();
         const options = {
-            backgroundColor: '#012359',
+            backgroundColor: '#00a5dc',
             cookieKey: 'cookie-consent'
         }
 
@@ -110,9 +112,11 @@ export default {
         const url = 'https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.js'
 
         this.add_script_tag(url, () => {
-            console.log('OMG')
+
         })
 
+        const link2 = 'https://eggwise.github.io/smartmed_cookie_widget/build/cookie.css'
+        this.add_style_tag(link2, null)
 
         this.hide_metomic()
 
